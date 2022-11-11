@@ -1,0 +1,22 @@
+/* h1 {
+   text-align: center;
+}
+.block {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+.box {
+   background-color: #9fc5f8;
+   border: 2px solid black;
+   width: 100px;
+   height: 100px;
+   margin: 20px;
+   
+} */
+
+/* display: flex;
+      justify-content: center;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin: 20px; */
