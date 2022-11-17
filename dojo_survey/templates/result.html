@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Result</title>
+</head>
+<body>
+   <div>
+   <h1> Submitted Info:</h1>
+   <p> Name: {{session['name']}} </p>
+   <p> Dojo Location : {{session['location']}} </p>
+   <p> Favorite Language : {{session['language']}} </p>
+   <p> Comment: {{session['comment']}} </p>
+   </div>
+   <a href="/reset" class="btn btn-primary">Go Back</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<p> Dojo Locations: </p>
+<div class="dropdown" name="location">
+   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      --Select a location--
+   </button>
+   <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#seattle">Seattle</a></li>
+      <li><a class="dropdown-item" href="#chicago">Chicago</a></li>
+      <li><a class="dropdown-item" href="#remote">Remote</a></li>
+   </ul>
+</div>
+<br> 
+<p> Favorite Coding Language: </p>
+<div class="dropdown" name="language">
+   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      --Select a language--
+   </button>
+   <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#python">Python</a></li>
+      <li><a class="dropdown-item" href="#c++">C++</a></li>
+      <li><a class="dropdown-item" href="#java">Java</a></li>
+   </ul>
+</div>
+<div class="mb-3" name="comment">
+   <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+ </div> -->
