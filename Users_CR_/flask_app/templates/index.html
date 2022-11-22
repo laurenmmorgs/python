@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add a new user</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   <link rel="stylesheet" href="flask_app/static/css/style.css">
+</head>
+<style>
+   h1 {
+      display: flex;
+      justify-content: center;
+   }
+   form {
+      display: flex;
+      justify-content: center;
+   }
+   #home {
+      display: flex;
+      justify-content: right;
+      margin-left: 236px;
+   }
+</style>
+<body>
+   <h1> Add a New User! </h1>
+   <form action="/create" method = "POST" >
+      <div class= "form"> 
+         <label for="first_name"> First Name </label>
+         <input class="form-control" type="text" placeholder="First Name" aria-label="default input example" name="first_name" style="width: 300px;">
+         <label for="last_name"> Last Name </label>
+         <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example" name="last_name" style="width: 300px;">
+         <label for="email"> Email </label>
+         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" style="width: 300px;">
+         <br>
+         <button  class="btn btn-primary">Submit</button>
+         <br>
+         <button class="btn btn-outline-info" id="home">Home</button>
+      </div>
+   </form>
+</body>
+</html>
