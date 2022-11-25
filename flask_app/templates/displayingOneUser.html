@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Displaying User </title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   <link rel="stylesheet" href="users_crud/flask_app/static/css/style.css">
+</head>
+<style>
+   h1 {
+      display: flex;
+      justify-content: center;
+      text-decoration: underline;
+   }
+   .card_total,a {
+   display: flex;
+   justify-content: center;
+}
+   p {
+      display: flex;
+      justify-content: center;
+   }
+
+</style>
+
+
+
+<body>
+   
+   <button class="new_user"><a href="/">Home</a></button>
+   <div class="card_total"> 
+
+      <div class="card" style="width: 18rem;">
+         <div class="card-body">
+            <h1 class="card-title"> User Info:{{user.id}} </h1> 
+            <p> Full Name:  {{user.first_name}} {{user.last_name}} </p>
+            <p> Email: {{user.email}}</p>
+            <p> Created at: {{user.created_at.strftime(dates)}} </p>
+            <p> Last Updated at: {{user.updated_at.strftime(dates)}}</p>
+         </div>
+      </div>
+   </div>
+   <p><a href="/user/delete/{{user.id}}">Delete</a> | <a href="/user/{{user.id}}/edit">Edit</a> </p>
+</body>
+</html>
