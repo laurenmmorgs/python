@@ -1,7 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import dojo
-from flask_app.controllers import ninjascontroller
-from flask_app.controllers import dojoscontroller
+from flask_app.controllers import ninjascontroller, dojoscontroller
 mydb ='dojos_and_ninjas'
 
 
@@ -42,3 +41,20 @@ class Ninjas:
             WHERE dojo_id = %(id)s;'''
             results = connectToMySQL(mydb).query_db(query,data)
             return cls(results[0])
+      
+      @classmethod
+      def edit(cls,data):
+            query = '''
+            UPDATE ninjas
+            SET
+            first_name=%(first_name)s,
+            last_name=%(last_name)s, age=%(age)s
+            WHERE id=%(id)s;'''
+            result = connectToMySQL(mydb).query_db(query,data)
+      
+      @classmethod
+      def deleteById(cls, data):
+            query = '''
+            DELETE FROM ninjas 
+            WHERE id =(%(id)s);'''
+            results = connectToMySQL(mydb).query_db(query,data)

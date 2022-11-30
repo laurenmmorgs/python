@@ -9,23 +9,21 @@
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-   <div class="everything">
-
-      <form action="/adding_dojo" method="POST">
-         <div class="new_dojo">
-            <h1> New Dojo</h1>
-            <input type="text" name="name">
-            <button> Create </button>
-         </div>
+   <div class="d-flex justify-content-around ">
+      <form action="/adding_dojo" method="POST"  class="col-4 bg-light p-4 my-5 text-dark">
+         <div class="form-group">
+               <h1 class="text-center text-primary"> New Dojo</h1>
+               <label for="name"> Dojo Name </label>
+               <input type="text" name="name" class="form-control my-4">
+            </div>
+            <button class="btn btn-outline-primary btn-outline-dark text" > Create </button>
       </form>
-      <div class="all_dojos">
-         <table class="table table-striped">
-         <h2 > All Dojos </h2>
+      <div class="col-4 bg-dark text-light text-center my-5 p-4">
+         <h2 class="text-primary" > All Dojos </h2>
          {% for dojo in dojos %}
          <p>
-            <a href="/displaying/ninjas/{{dojo.id}}"> {{dojo.name}} </a> </p>
+            <a href="/displaying/ninjas/{{dojo.id}}" class="link-light"> {{dojo.name}} </a> </p>
          {% endfor %}
-      </table>
       </div>
       <a href="/ninjas"> Add Ninja </a>
    </div>

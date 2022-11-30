@@ -15,15 +15,17 @@ def get_all():
 
 @app.route('/adding_dojo', methods=["POST"])
 def adding_dojo():
-   data = {
-      "name_of_dojo": request.form['name']  #? This doesn't have to be the same name as the value 
-   }
-   dojo.Dojos.save(data)
+   # data = {
+   #    "name": request.form['name']  #? This doesn't have to be the same name as the value 
+   # }
+   #! SO we don't need to add this 
+   dojo.Dojos.save(request.form)
    return redirect('/dojos')
 
 
 @app.route('/displaying/ninjas/<int:dojo_id>')
 def displaying_ninjas(dojo_id):
-   return render_template('showing_ninjas.html', 
-   dojo = dojo.Dojos.getByID({'id': dojo_id}),
-   ninjas_in_dojos = dojo.Dojos.get_ninja_with_dojos({'dojo_id': dojo_id }))
+   data= {
+      'dojo_id': dojo_id
+   }
+   return render_template('showing_ninjas.html', dojo = dojo.Dojos.get_ninja_with_dojos(data))

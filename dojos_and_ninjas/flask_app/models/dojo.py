@@ -29,8 +29,8 @@ class Dojos:
    def save(cls,data):
       query='''
       INSERT INTO dojos 
-      (id, name, created_at, updated_at)
-      VALUES( %(id)s,%(name)s, NOW(),NOW());'''
+      (name, created_at, updated_at)
+      VALUES(%(name)s, NOW(),NOW());'''
       results = connectToMySQL(mydb).query_db(query,data)
       return results 
 

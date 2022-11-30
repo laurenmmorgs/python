@@ -1,15 +1,1 @@
-.all_dojos {
-   border: 2px solid black;
-   width: 200px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-}
-.everything {
-   display: flex;
-   justify-content: space-evenly;
-}
 
-.ninjas {
-   background-color: cadetblue;
-}
