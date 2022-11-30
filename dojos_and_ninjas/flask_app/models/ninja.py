@@ -1,5 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import dojo
+from flask_app.controllers import ninjascontroller
+from flask_app.controllers import dojoscontroller
 mydb ='dojos_and_ninjas'
 
 
@@ -18,9 +20,9 @@ class Ninjas:
             print(data)
             query='''
             INSERT INTO ninjas 
-            (first_name,last_name,age)
-            VALUES(%(first_name)s,%(last_name)s,%(age)s, %(dojo_id)s);'''
-            connectToMySQL(mydb).query_db(query,data)
+            (first_name,last_name,age,dojo_id, created_at, updated_at)
+            VALUES(%(first_name)s,%(last_name)s,%(age)s, %(dojo_id)s, NOW(), NOW());'''
+            return connectToMySQL(mydb).query_db(query,data)
 
       @classmethod 
       def get_all_ninjas(cls):
@@ -37,6 +39,6 @@ class Ninjas:
             query = '''
             SELECT * 
             FROM ninjas
-            WHERE dojo_id = %(dojo_id)s;'''
+            WHERE dojo_id = %(id)s;'''
             results = connectToMySQL(mydb).query_db(query,data)
             return cls(results[0])

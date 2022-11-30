@@ -1,15 +1,16 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import ninja
+from flask_app.models.ninja import Ninjas
+from pprint import pprint
 mydb ='dojos_and_ninjas'
 
 
 
 class Dojos:
    def __init__(self, data):
-      self.created_at = data['created_at'],
-      self.updated_at = data['updated_at'],
-      self.name = data['name']
       self.id = data['id']
+      self.name = data['name']
+      self.created_at = data['created_at']
+      self.updated_at = data['updated_at']
       self.ninjas = []
 
 
@@ -28,8 +29,8 @@ class Dojos:
    def save(cls,data):
       query='''
       INSERT INTO dojos 
-      (name)
-      VALUES(%(name)s);'''
+      (id, name, created_at, updated_at)
+      VALUES( %(id)s,%(name)s, NOW(),NOW());'''
       results = connectToMySQL(mydb).query_db(query,data)
       return results 
 
@@ -45,22 +46,21 @@ class Dojos:
    @classmethod
    def get_ninja_with_dojos(cls,data):
       query= '''
-      SELECT ninjas.id, ninjas.first_name, ninjas.last_name, ninjas.age, dojos.name, dojos.id
-      FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id
-      WHERE dojos.id = %(id)s;'''
+      SELECT *
+      FROM dojos JOIN ninjas ON dojos.id = ninjas.dojo_id
+      WHERE dojos.id = %(dojo_id)s;'''
       results = connectToMySQL(mydb).query_db(query,data)
       print(results)
       dojo = cls(results[0])
       for ninjas_in_dojos in results:
          ninja_data = {
             'id': ninjas_in_dojos['ninjas.id'],
-            'first_name': ninjas_in_dojos['ninjas.first_name'],
-            'last_name': ninjas_in_dojos['ninjas.last_name'],
-            'age': ninjas_in_dojos['ninjas.age'],
-            'dojo_id': ninjas_in_dojos['ninjas.dojo_id'],
+            'first_name': ninjas_in_dojos['first_name'],
+            'last_name': ninjas_in_dojos['last_name'],
+            'age': ninjas_in_dojos['age'],
+            'dojo_id': ninjas_in_dojos['dojo_id'],
             'created_at': ninjas_in_dojos['ninjas.created_at'],
             'updated_at': ninjas_in_dojos['ninjas.updated_at']
          }
-         dojo.ninjas.append(ninja.Ninjas(ninja_data))
-         print(f' This is for the class method {dojo}')
+         dojo.ninjas.append(Ninjas(ninja_data))
       return dojo 

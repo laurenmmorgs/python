@@ -10,16 +10,16 @@
 <body>
    <h1> New Ninja </h1>
    <form action="/create/ninja" method="POST">
-   <select name="dojo_id">
+      <select name = 'dojo_id'>
       {% for dojo in dojos %}
-      <option value="{{dojo.id}}"> {{dojo.name}}</option>
+      <option  value= {{dojo.id}}> {{dojo.name}}</option>
       {%endfor%}
    </select>
    <p> First Name :</p><input type="text" name="first_name">
    <p> Last Name :</p><input type="text" name="last_name">
    <p> Age:</p><input type="text" name="age">
    <br>
-   <button >Create</button>
+   <button> <a href="/ninjas"></a> Create</button>
    </form>
 <br>
 </body>
