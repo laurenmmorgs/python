@@ -1,6 +1,9 @@
 #this represents our USERS table in our database
 from flask_app.config.mysqlconnection import connectToMySQL 
 from pprint import pprint
+from flask import flash
+import re	  
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 mydb = 'users' #! tells us what schema we want to access
 
 class Users: 
@@ -10,6 +13,21 @@ class Users:
       self.last_name = data['last_name']
       self.email = data['email']
       self.created_at = data['created_at']
+   
+   @staticmethod
+   def validate_user(request):
+      is_valid = True
+      if len(request['first_name']) < 1:
+         flash('Invalid First Name!  ')
+         is_valid = False
+      if len(request['last_name']) < 1:
+         flash('Invalid Last Name!  ')
+         is_valid = False
+      if not EMAIL_REGEX.match(request['email']):
+         flash('Invalid Email!! ')
+         is_valid = False
+      return is_valid
+
 
    @classmethod #! this has to be in the class so no indentation
    def get_all(cls): #!dont forget the cls part so we can access it 
